@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html><head><meta charset="utf-8"><title>Eser.Signature.NoWeight</title><link rel="stylesheet" href="Agda.css"></head><body><pre class="Agda"><a id="1" class="Comment">-- Module      : Eser.Signature.NoWeights</a>
+<a id="43" class="Comment">-- Description : Representation of terms of a signature with weight annotations.</a>
+<a id="124" class="Comment">-- Copyright   : (c) Lulof Pirée, 2026</a>
+<a id="163" class="Comment">-- License     : AGPL-v3</a>
+<a id="188" class="Comment">-- Maintainer  : Lulof Pirée</a>
+<a id="217" class="Comment">--------------------------------------------------------------------------------</a>
+<a id="298" class="Comment">-- Eser.Signature.Definitions defines the `OpenTerms` of a signature</a>
+<a id="367" class="Comment">-- as an inductive type indexed by</a>
+<a id="402" class="Comment">-- (1) the weight of a term</a>
+<a id="430" class="Comment">-- (2) the number of open argument-holes of a term</a>
+<a id="481" class="Comment">--</a>
+<a id="484" class="Comment">-- For enumerating the terms, indeed both indices are needed:</a>
+<a id="546" class="Comment">-- the proof of enumeration uses &lt;-rec on the weights to inductively number all</a>
+<a id="626" class="Comment">-- terms of weight 0, then of weight 1, then of weight 2, etc.</a>
+<a id="689" class="Comment">--</a>
+<a id="692" class="Comment">-- But the weight indices are very annoying when destructing a term via</a>
+<a id="764" class="Comment">-- pattern-matching, since the weight of a giveArg-constructed term</a>
+<a id="832" class="Comment">-- is `wₐ + wₜ` and Agda tends to fail unifying `w ≗ wₐ + wₜ`.</a>
+<a id="895" class="Comment">--</a>
+<a id="898" class="Comment">-- The solution is simply to also define an alternative representation</a>
+<a id="969" class="Comment">-- of open terms without weight index.</a>
+<a id="1008" class="Comment">-- (We must keep the argument-holes index, since it is used as a constraint</a>
+<a id="1084" class="Comment">-- which terms we can build; we should avoid applying arguments to a closed</a>
+<a id="1160" class="Comment">-- type!)</a>
+<a id="1170" class="Comment">--------------------------------------------------------------------------------</a>
+
+<a id="1252" class="Keyword">module</a> <a id="1259" href="Eser.Signature.NoWeight.html" class="Module">Eser.Signature.NoWeight</a> <a id="1283" class="Keyword">where</a>
+    <a id="1293" class="Keyword">open</a> <a id="1298" class="Keyword">import</a> <a id="1305" href="Eser.Signature.NoWeight.Definitions.html" class="Module">Eser.Signature.NoWeight.Definitions</a> <a id="1341" class="Keyword">public</a>
+    <a id="1352" class="Keyword">open</a> <a id="1357" class="Keyword">import</a> <a id="1364" href="Eser.Signature.NoWeight.Properties.html" class="Module">Eser.Signature.NoWeight.Properties</a> <a id="1399" class="Keyword">public</a>
+</pre></body></html>
